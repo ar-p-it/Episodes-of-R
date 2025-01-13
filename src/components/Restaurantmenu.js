@@ -1,26 +1,27 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Schimmer";
 import { useParams } from "react-router";
-import { MENU_URL1 } from "../utils/constants";
-import { MENU_URL2 } from "../utils/constants";
+import useRestaurantmenu from "../utils/useRestaurantmenu";
+
 const RestaurantMenu = () => {
-  const [resinfo, setresinfo] = useState(null);
+  // const [resinfo, setresinfo] = useState(null);
 
-  const {resId} = useParams();
-  console.log(resId);
+  const { resId } = useParams();
+  const resinfo = useRestaurantmenu(resId);
+  // console.log(resId);
+//* Code should be single responsibility fxn ye part pahle do kaam krra tha jo ki data fetch krna aur display krna par customised hooks se humne fetch ko dusre part main daal diya
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, []);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      MENU_URL1+resId+MENU_URL2
-    );
-    const json = await data.json();
-    console.log(json);
-    setresinfo(json.data);
-  };
+  // const fetchMenu = async () => {
+  //   const data = await fetch(
+  //     MENU_URL1+resId+MENU_URL2
+  //   );
+  //   const json = await data.json();
+  //   console.log(json);
+  //   setresinfo(json.data);
+  // };
 
   if (resinfo === null) return <Shimmer />;
   //   const [name,cuisines]=resinfo?.cards[2]?.card?.card?.info
