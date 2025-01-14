@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import resList from "../utils/mockData";
 import Shimmer from "./Schimmer";
 import { Link } from "react-router";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
+ 
 // const Body = () => {
 //   // Local State Variable - Super powerful variable
 //   const [listOfRestaurants, setListOfRestraunt] = useState(resList);
@@ -202,6 +203,16 @@ const Body = () => {
     // Update the state with valid restaurants
     setListOfRestraunt(validRestaurants);
   };
+
+  const onlinestatus= useOnlineStatus();
+  if (onlinestatus===false) {
+    return(
+      <h1>u r off</h1>
+    )
+  }
+
+
+
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
