@@ -4,7 +4,7 @@ import resList from "../utils/mockData";
 import Shimmer from "./Schimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
- 
+//  !hii
 // const Body = () => {
 //   // Local State Variable - Super powerful variable
 //   const [listOfRestaurants, setListOfRestraunt] = useState(resList);
@@ -204,15 +204,10 @@ const Body = () => {
     setListOfRestraunt(validRestaurants);
   };
 
-  const onlinestatus= useOnlineStatus();
-  if (onlinestatus===false) {
-    return(
-      <h1>u r off</h1>
-    )
+  const onlinestatus = useOnlineStatus();
+  if (onlinestatus === false) {
+    return <h1>u r off</h1>;
   }
-
-
-
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -227,7 +222,7 @@ const Body = () => {
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-          className="px-4 bg-orange-50 mx-1 py-1.5 rounded-lg"
+            className="px-4 bg-orange-50 mx-1 py-1.5 rounded-lg"
             onClick={() => {
               const filteredRestaurants = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -239,19 +234,18 @@ const Body = () => {
           </button>
         </div>
         <div className="search m-3 p-3 flex items-center">
-        <button
-          className="filter-btn px-4 py-3 bg-red-100 m-4 rounded-md"
-          onClick={() => {
-            const filteredList = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.4
-            );
-            setListOfRestraunt(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+          <button
+            className="filter-btn px-4 py-3 bg-red-100 m-4 rounded-md"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.info.avgRating > 4.4
+              );
+              setListOfRestraunt(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
         </div>
-
       </div>
       <div className="res-container flex flex-wrap">
         {listOfRestaurants.map((restaurant) =>
