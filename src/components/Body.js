@@ -192,7 +192,7 @@ const Body = () => {
 
     // Safely access the restaurants data with fallback to an empty array
     const restaurants =
-      json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || [];
 
     // Filter out invalid restaurants (e.g., those without an `id`)
@@ -218,8 +218,8 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex items-center">
+        <div className="search m-3 p-3">
           <input
             type="text"
             className="search-box"
@@ -227,6 +227,7 @@ const Body = () => {
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
+          className="px-4 bg-orange-50 mx-1 py-1.5 rounded-lg"
             onClick={() => {
               const filteredRestaurants = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -237,8 +238,9 @@ const Body = () => {
             Search
           </button>
         </div>
+        <div className="search m-3 p-3 flex items-center">
         <button
-          className="filter-btn"
+          className="filter-btn px-4 py-3 bg-red-100 m-4 rounded-md"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4.4
@@ -248,8 +250,10 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        </div>
+
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {listOfRestaurants.map((restaurant) =>
           restaurant?.info?.id ? (
             <Link
