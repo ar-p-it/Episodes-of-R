@@ -1,4 +1,4 @@
-<!-- # Namaste React 🚀
+<!-- # React 🚀
 
 
 # Parcel
