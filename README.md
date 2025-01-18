@@ -67,7 +67,7 @@ import {Component} from "path";
 
  -->
 
-# Namaste React 🚀
+#  React 🚀
 
 
 # Parcel
